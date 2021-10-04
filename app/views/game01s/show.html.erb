@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<div style="text-align: center">
+  <h1><strong><%= @game01.name %></strong></h1>  
+</div>
+
+<br>
+<br>
+
+<div style="text-align: center">
+  <h3><strong>Rules text</strong></h3>
+  <p><%= @game01.rule_text %></p>
+</div>
+
+<br>
+<br>
+
+<div style="text-align: center">
+  <h3><strong>Rules file</strong></h3>
+  <%= link_to (image_tag @game01.rule.preview(resize: "300x300"), :title => "Click to download"), rails_blob_path(@game01.rule, disposition: 'attachment') %>
+</div>
+
+<br>
+<br>
+
+<div style="text-align: center">
+  <h3><strong>Box photo</strong></h3>
+  <%= image_tag @game01.box.variant(resize: "300x300") %>
+</div>
+
+<br>
+<br>
+
+<div style="text-align: center">
+  <h3><strong>Pieces photos</strong></h3>
+  <% @game01.pieces.each do |piece| %>
+    <%= image_tag piece.variant(resize: "300x300") %>  
+  <% end %>  
+</div>
+
+<br>
+<hr>
+
+<%= link_to 'Edit', edit_game01_path(@game01) %> |
+<%= link_to 'Back', game01s_path %>
